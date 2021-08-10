@@ -5,6 +5,8 @@ import java.time.LocalTime;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import Panel.AEstacion;
+
 public class Main {
 	
 	public static void main(String[] args) {
@@ -43,9 +45,9 @@ public class Main {
 		;
 		
 		
-		grafo1.paths("A", "F");
-		System.out.println(grafo1.bfs(grafo1.getNodo("A")));
-		System.out.println(grafo1.dfs(grafo1.getNodo("A")));
+		//grafo1.paths("A", "F");
+		//System.out.println(grafo1.bfs(grafo1.getNodo("A")));
+		//System.out.println(grafo1.dfs(grafo1.getNodo("A")));
 		
 		Graph<Estacion> grafoE = new Graph<Estacion>();
 		
@@ -65,7 +67,7 @@ public class Main {
 		grafoE.conectar(estC, estB);
 		grafoE.conectar(estB, estD);
 		
-		grafoE.paths(estA, estD);
+		//grafoE.paths(estA, estD);
 		//System.out.println(estA.toString());
 		
 		
@@ -74,8 +76,9 @@ public class Main {
 		//ventana.setTitle ("");
 		ventana.pack();
 		ventana.setSize (400,400);
+		
+		ventana.setContentPane(new AEstacion().armarPanel());
 		ventana.setVisible(true);
-		//ventana.setContentPane();
 		
 		
 
