@@ -11,6 +11,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		/*
+		
 		System.out.println("Grafos");
 		Graph<String> grafo1 = new Graph<String>();
 		
@@ -67,6 +69,8 @@ public class Main {
 		grafoE.conectar(estC, estB);
 		grafoE.conectar(estB, estD);
 		
+		*/
+		
 		//grafoE.paths(estA, estD);
 		//System.out.println(estA.toString());
 		
@@ -74,10 +78,11 @@ public class Main {
 		JFrame ventana = new JFrame("Sistema de Gestión Transporte Multimodal");
 		ventana.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		//ventana.setTitle ("");
-		//ventana.pack();
-		ventana.setSize (900,400);
+		
+		//ventana.setSize (800,400);
 		
 		ventana.setContentPane(new AEstacion().armarPanel());
+		ventana.pack();
 		ventana.setVisible(true);
 		
 		

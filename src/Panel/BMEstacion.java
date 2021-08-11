@@ -10,7 +10,7 @@ import java.awt.Insets;
 import javax.swing.*;
 
 
-public class AEstacion extends JPanel {
+public class BMEstacion extends JPanel {
 	
 	private JLabel tit;
 	private JLabel nombre;
@@ -27,15 +27,15 @@ public class AEstacion extends JPanel {
 	private GridBagConstraints gbc;
 	
 	
-	public AEstacion() {
+	public BMEstacion() {
 		this.gbc = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
 		
 	}
 	
-	public AEstacion armarPanel() {
+	public BMEstacion armarPanel() {
 		
-		this.tit = new JLabel("Crear estación");
+		this.tit = new JLabel("Modificar estación");
 		this.nombre = new JLabel("Nombre");
 		this.tnombre = new JTextField(40);
 		this.apertura = new JLabel("Horario apertura");
