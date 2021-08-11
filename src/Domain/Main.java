@@ -74,8 +74,8 @@ public class Main {
 		JFrame ventana = new JFrame("Sistema de Gestión Transporte Multimodal");
 		ventana.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		//ventana.setTitle ("");
-		ventana.pack();
-		ventana.setSize (400,400);
+		//ventana.pack();
+		ventana.setSize (900,400);
 		
 		ventana.setContentPane(new AEstacion().armarPanel());
 		ventana.setVisible(true);
