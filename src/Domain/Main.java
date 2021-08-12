@@ -1,10 +1,13 @@
 package Domain;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import DB.T_estacion;
 import Panel.AEstacion;
 
 public class Main {
@@ -85,6 +88,15 @@ public class Main {
 		ventana.pack();
 		ventana.setVisible(true);
 		
+		T_estacion aT = new T_estacion();
+		//aT.insert("yo", "soy", "muy", "copado");
+		//System.out.println(probando.nextId());
+		
+		List<String> lis = new ArrayList<String>();
+		
+		aT.buscar("yo", lis);
+		System.out.println(lis.toString());
+		System.out.println("termina "+lis.get(0)+" ???");
 		
 
 

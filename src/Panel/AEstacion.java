@@ -9,6 +9,9 @@ import java.awt.Insets;
 
 import javax.swing.*;
 
+import DB.T_estacion;
+import Domain.Estado;
+
 
 public class AEstacion extends JPanel {
 	
@@ -20,9 +23,9 @@ public class AEstacion extends JPanel {
 	private JLabel cierre;
 	private JTextField tcierre;
 	private JLabel estado;
-	private JTextField testado;
+	private JComboBox<String> testado;
 	private JButton agregar;
-	private JButton cancelar;
+	private JButton salir;
 	
 	private GridBagConstraints gbc;
 	
@@ -43,9 +46,9 @@ public class AEstacion extends JPanel {
 		this.cierre = new JLabel("Horario cierre");
 		this.tcierre = new JTextField(40);
 		this.estado = new JLabel("Estado");
-		this.testado = new JTextField(40);
+		this.testado = new JComboBox<String>();
 		this.agregar = new JButton("Agregar"); 
-		this.cancelar = new JButton("Cancelar");
+		this.salir = new JButton("Salir");
 		
 		//label
 		gbc.gridx = 0;		//posición
@@ -81,7 +84,7 @@ public class AEstacion extends JPanel {
 		//gbc.weightx = 0.5;
 		//gbc.weighty = 0.1;
 		gbc.gridwidth=2;						//cant celdas
-		gbc.anchor = GridBagConstraints.CENTER;
+		gbc.anchor = GridBagConstraints.WEST;
 		this.add(tnombre,gbc);
 		gbc.gridx = 2;
 		gbc.gridy = 2;
@@ -91,23 +94,54 @@ public class AEstacion extends JPanel {
 		this.add(tcierre,gbc);
 		gbc.gridx = 2;
 		gbc.gridy = 4;
-		gbc.gridwidth=2;
+		//gbc.anchor = GridBagConstraints.WEST;
 		this.add(testado,gbc);
+		testado.addItem("Operativa");
+		testado.addItem("En_mantenimiento");
 		
 		//button
 		gbc.gridx = 2;
 		gbc.gridy = 6;
 		gbc.weightx = 0.1;
-		gbc.weighty = 0.2;
+		gbc.weighty = 0.5;
 		gbc.gridwidth=1;
-		//gbc.anchor = GridBagConstraints.EAST;
+		gbc.anchor = GridBagConstraints.EAST;
 		//gbc.ipadx = 40;
 		//gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.add(agregar,gbc);
 		gbc.gridx = 3;
 		gbc.gridy = 6;
-		//gbc.anchor = GridBagConstraints.EAST;
-		this.add(cancelar,gbc);
+		//gbc.anchor = GridBagConstraints.WEST;
+		this.add(salir,gbc);
+		
+//		agregar.addActionListener(e -> {
+//			tit.setText("OK");
+//			tit.setForeground(Color.RED);
+//					});
+		
+		agregar.addActionListener(e -> {
+			String tnom = this.tnombre.getText();
+			String tape = this.tapertura.getText();
+			String tcie = this.tcierre.getText();
+			String test = (String) this.testado.getSelectedItem();
+			
+			T_estacion aT = new T_estacion();
+			aT.insert(tnom, tape, tcie, test);
+			
+			tit.setText("Estación agregada!");
+			tit.setForeground(Color.RED);
+			agregar.setEnabled(false);
+		});
+			
+			
+		
+		
+		salir.addActionListener(e -> {
+			//this.windowClosing(e);
+            System.exit(0);
+           
+		});
+	
 		
 		//this.agregar.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		

@@ -8,8 +8,7 @@ public class Estacion {
 	private String nombre;
 	private LocalTime apertura;
 	private LocalTime cierre;
-	private estado estado;
-	private enum estado {Operativa, En_mantenimiento};
+	private Estado estado;
 	private List<Mantenimiento> mantenimientos;
 	
 	public Estacion(String nombre, LocalTime apertura, LocalTime cierre) {
@@ -17,7 +16,7 @@ public class Estacion {
 		this.nombre = nombre;
 		this.apertura = apertura;
 		this.cierre = cierre;
-		this.estado = estado.Operativa;
+		this.estado = Estado.Operativa;
 	}
 
 	public String getNombre() {
