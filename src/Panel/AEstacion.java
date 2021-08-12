@@ -138,7 +138,8 @@ public class AEstacion extends JPanel {
 		
 		salir.addActionListener(e -> {
 			//this.windowClosing(e);
-            System.exit(0);
+            //System.exit(0);
+			this.setVisible(false);
            
 		});
 	

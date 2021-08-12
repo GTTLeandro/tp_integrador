@@ -1,3 +1,4 @@
+
 package Panel;
 
 
@@ -9,43 +10,46 @@ import java.awt.Insets;
 
 import javax.swing.*;
 
+import DB.T_estacion;
+import DB.T_linea;
+import Domain.Estado;
 
-public class BMEstacion extends JPanel {
+
+public class ALinea extends JPanel {
 	
 	private JLabel tit;
 	private JLabel nombre;
 	private JTextField tnombre;
-	private JLabel apertura;
-	private JTextField tapertura;
-	private JLabel cierre;
-	private JTextField tcierre;
+	private JLabel color;
+	private JTextField tcolor;
 	private JLabel estado;
-	private JTextField testado;
+	private JComboBox<String> testado;
 	private JButton agregar;
-	private JButton cancelar;
+	private JButton salir;
 	
 	private GridBagConstraints gbc;
 	
 	
-	public BMEstacion() {
+	public ALinea() {
 		this.gbc = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
 		
 	}
 	
-	public BMEstacion armarPanel() {
+	public ALinea armarPanel() {
 		
-		this.tit = new JLabel("Modificar estación");
+		this.tit = new JLabel("Crear línea");
 		this.nombre = new JLabel("Nombre");
 		this.tnombre = new JTextField(40);
-		this.apertura = new JLabel("Horario apertura");
-		this.tapertura = new JTextField(40);
-		this.cierre = new JLabel("Horario cierre");
-		this.tcierre = new JTextField(40);
+		this.color = new JLabel("Color");
+		this.tcolor = new JTextField(40);
+		
+
 		this.estado = new JLabel("Estado");
-		this.testado = new JTextField(40);
+		this.testado = new JComboBox<String>();
+		
 		this.agregar = new JButton("Agregar"); 
-		this.cancelar = new JButton("Cancelar");
+		this.salir = new JButton("Salir");
 		
 		//label
 		gbc.gridx = 0;		//posición
@@ -67,12 +71,9 @@ public class BMEstacion extends JPanel {
 		this.add(nombre,gbc);
 		gbc.gridx = 0;
 		gbc.gridy = 2;
-		this.add(apertura,gbc);
+		this.add(color,gbc);
 		gbc.gridx = 0;
 		gbc.gridy = 3;
-		this.add(cierre,gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 4;
 		this.add(estado,gbc);
 		
 		//text
@@ -81,33 +82,60 @@ public class BMEstacion extends JPanel {
 		//gbc.weightx = 0.5;
 		//gbc.weighty = 0.1;
 		gbc.gridwidth=2;						//cant celdas
-		gbc.anchor = GridBagConstraints.CENTER;
+		gbc.anchor = GridBagConstraints.WEST;
 		this.add(tnombre,gbc);
 		gbc.gridx = 2;
 		gbc.gridy = 2;
-		this.add(tapertura,gbc);
+		this.add(tcolor,gbc);
 		gbc.gridx = 2;
 		gbc.gridy = 3;
-		this.add(tcierre,gbc);
-		gbc.gridx = 2;
-		gbc.gridy = 4;
-		gbc.gridwidth=2;
 		this.add(testado,gbc);
+		testado.addItem("Activa");
+		testado.addItem("No_activa");
 		
 		//button
 		gbc.gridx = 2;
 		gbc.gridy = 6;
 		gbc.weightx = 0.1;
-		gbc.weighty = 0.2;
+		gbc.weighty = 0.5;
 		gbc.gridwidth=1;
-		//gbc.anchor = GridBagConstraints.EAST;
+		gbc.anchor = GridBagConstraints.EAST;
 		//gbc.ipadx = 40;
 		//gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.add(agregar,gbc);
 		gbc.gridx = 3;
 		gbc.gridy = 6;
-		//gbc.anchor = GridBagConstraints.EAST;
-		this.add(cancelar,gbc);
+		//gbc.anchor = GridBagConstraints.WEST;
+		this.add(salir,gbc);
+		
+//		agregar.addActionListener(e -> {
+//			tit.setText("OK");
+//			tit.setForeground(Color.RED);
+//					});
+		
+		agregar.addActionListener(e -> {
+			String tnom = this.tnombre.getText();
+			String tcol = this.tcolor.getText();
+			String test = (String) this.testado.getSelectedItem();
+			
+			T_linea aT = new T_linea();
+			aT.insert(tnom, tcol, test);
+			
+			tit.setText("Línea agregada!");
+			tit.setForeground(Color.RED);
+			agregar.setEnabled(false);
+		});
+			
+			
+		
+		
+		salir.addActionListener(e -> {
+			//this.windowClosing(e);
+            //System.exit(0);
+			this.setVisible(false);
+           
+		});
+	
 		
 		//this.agregar.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		

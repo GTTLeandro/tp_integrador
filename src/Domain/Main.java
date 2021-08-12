@@ -4,11 +4,21 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.WindowConstants;
 
 import DB.T_estacion;
 import Panel.AEstacion;
+import Panel.ALinea;
+import Panel.Cons_Estacion;
+import Panel.Cons_Linea;
+import Panel.Inicio;
+
 
 public class Main {
 	
@@ -79,28 +89,96 @@ public class Main {
 		
 		
 		JFrame ventana = new JFrame("Sistema de Gestión Transporte Multimodal");
+		
 		ventana.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		//ventana.setTitle ("");
 		
 		//ventana.setSize (800,400);
 		
-		ventana.setContentPane(new AEstacion().armarPanel());
-		ventana.pack();
+		JLabel background= new JLabel();
+		background.setIcon(new ImageIcon("C:\\01.jpg"));
+        ventana.add(background);
+		
+		
+        
+        JMenuBar mb = new JMenuBar();
+		 ventana.setJMenuBar(mb);
+		 
+		 JMenu menu1;
+		 JMenuItem mi1,mi2,mi3;
+		      
+	     menu1=new JMenu("Estaciones");
+	     mb.add(menu1);
+	     mi1=new JMenuItem("Agregar");
+	     mi1.addActionListener (e -> {
+	    	 ventana.setContentPane(new AEstacion().armarPanel());	
+	    	 ventana.pack();});
+	     
+	     menu1.add(mi1);
+	     mi2=new JMenuItem("Ver todas");
+	     mi2.addActionListener (e -> {
+	    	 ventana.setContentPane(new Cons_Estacion());
+	    	 ventana.pack();
+	    	 });
+     
+    	 
+	     menu1.add(mi2);
+	     mi3=new JMenuItem("...");
+	     //   mi3.addActionListener(this);
+	     menu1.add(mi3); 
+		
+	     
+	     JMenu menu2;
+		 JMenuItem mi12,mi22,mi32;
+		      
+	     menu2=new JMenu("Líneas");
+	     mb.add(menu2);
+	     mi12=new JMenuItem("Agregar");
+	     mi12.addActionListener (e -> {
+	    	 ventana.setContentPane(new ALinea().armarPanel());	
+	    	 ventana.pack();});
+	     
+	     
+	     menu2.add(mi12);
+	     
+	     mi22=new JMenuItem("Ver todas");
+	     mi22.addActionListener (e -> {
+	    	 ventana.setContentPane(new Cons_Linea());
+	    	 ventana.pack();
+	    	 });
+	     	     
+	     menu2.add(mi22);
+	     
+	     
+	     mi32=new JMenuItem("...");
+	     //   mi3.addActionListener(this);
+	     menu1.add(mi3); 
+		
+	     
+	    
+	    ventana.setContentPane(new Inicio()); 
+	    ventana.setSize (800,400);
+	     
+		//ventana.setContentPane(new AEstacion().armarPanel());
+		//ventana.pack();
 		ventana.setVisible(true);
 		
 		T_estacion aT = new T_estacion();
-		//aT.insert("yo", "soy", "muy", "copado");
-		//System.out.println(probando.nextId());
-		
+				
 		List<String> lis = new ArrayList<String>();
 		
-		aT.buscar("yo", lis);
-		System.out.println(lis.toString());
-		System.out.println("termina "+lis.get(0)+" ???");
 		
+		
+		
+		
+	
+	  
+		
+}	
 
-
-
-
-	}
 }
+
+
+
+	
+
