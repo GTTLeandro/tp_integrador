@@ -1,10 +1,14 @@
 package Domain;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -89,18 +93,23 @@ public class Main {
 		
 		
 		JFrame ventana = new JFrame("Sistema de Gestión Transporte Multimodal");
-		
 		ventana.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		//ventana.setTitle ("");
 		
+		//ventana.setTitle ("");
 		//ventana.setSize (800,400);
 		
-		JLabel background= new JLabel();
-		background.setIcon(new ImageIcon("C:\\01.jpg"));
-        ventana.add(background);
+//		JLabel background= new JLabel();
+//		background.setIcon(new ImageIcon("C:\\01.jpg"));
+//        ventana.add(background);
+		
+		JButton salir = new JButton("Salir");
+		
+		GridBagConstraints gbcf = new GridBagConstraints();
+		ventana.setLayout(new GridBagLayout());
 		
 		
-        
+		//MENU
+		
         JMenuBar mb = new JMenuBar();
 		 ventana.setJMenuBar(mb);
 		 
@@ -111,8 +120,15 @@ public class Main {
 	     mb.add(menu1);
 	     mi1=new JMenuItem("Agregar");
 	     mi1.addActionListener (e -> {
+	    	 gbcf.gridx = 0;
+	 		 gbcf.gridy = 0;
 	    	 ventana.setContentPane(new AEstacion().armarPanel());	
-	    	 ventana.pack();});
+	    	 gbcf.gridx = 3;
+	 		 gbcf.gridy = 6;
+	 		 gbcf.insets= new Insets(5,5,5,5);
+	 		 ventana.add(salir,gbcf); 
+	    	 ventana.pack();
+	    	 });
 	     
 	     menu1.add(mi1);
 	     mi2=new JMenuItem("Ver todas");
@@ -126,8 +142,7 @@ public class Main {
 	     mi3=new JMenuItem("...");
 	     //   mi3.addActionListener(this);
 	     menu1.add(mi3); 
-		
-	     
+			     
 	     JMenu menu2;
 		 JMenuItem mi12,mi22,mi32;
 		      
@@ -137,8 +152,7 @@ public class Main {
 	     mi12.addActionListener (e -> {
 	    	 ventana.setContentPane(new ALinea().armarPanel());	
 	    	 ventana.pack();});
-	     
-	     
+	    	     
 	     menu2.add(mi12);
 	     
 	     mi22=new JMenuItem("Ver todas");
@@ -148,24 +162,32 @@ public class Main {
 	    	 });
 	     	     
 	     menu2.add(mi22);
-	     
-	     
+	    	     
 	     mi32=new JMenuItem("...");
 	     //   mi3.addActionListener(this);
 	     menu1.add(mi3); 
 		
 	     
-	    
+	    //PANEL
+	    gbcf.gridx = 0;
+		gbcf.gridy = 0;
 	    ventana.setContentPane(new Inicio()); 
-	    ventana.setSize (800,400);
+	    	//ventana.setSize (700,450);
+	     	//ventana.setContentPane(new AEstacion().armarPanel());
+		ventana.pack();
+		ventana.setVisible(true); 
 	     
-		//ventana.setContentPane(new AEstacion().armarPanel());
-		//ventana.pack();
-		ventana.setVisible(true);
+	   
 		
-		T_estacion aT = new T_estacion();
-				
-		List<String> lis = new ArrayList<String>();
+		salir.addActionListener(e -> {
+			gbcf.gridx = 0;
+			gbcf.gridy = 0;
+			ventana.setContentPane(new Inicio());
+			ventana.pack();
+			ventana.setVisible(true);
+		});
+		
+		
 		
 		
 		

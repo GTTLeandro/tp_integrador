@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
@@ -25,7 +26,6 @@ public class AEstacion extends JPanel {
 	private JLabel estado;
 	private JComboBox<String> testado;
 	private JButton agregar;
-	private JButton salir;
 	
 	private GridBagConstraints gbc;
 	
@@ -48,9 +48,9 @@ public class AEstacion extends JPanel {
 		this.estado = new JLabel("Estado");
 		this.testado = new JComboBox<String>();
 		this.agregar = new JButton("Agregar"); 
-		this.salir = new JButton("Salir");
+
 		
-		//label
+		
 		gbc.gridx = 0;		//posición
 		gbc.gridy = 0;
 		gbc.weightx = 0.1;	//peso
@@ -59,12 +59,13 @@ public class AEstacion extends JPanel {
 		//gbc.ipadx = 10;				//margen int		
 		//gbc.ipady = 10;
 		gbc.insets= new Insets(5,5,5,5);	 //top,left,bottom,right 	
+		
+		//Título
 		this.add(tit,gbc);
 		tit.setForeground(Color.BLUE);
 		tit.setFont(tit.getFont().deriveFont(22.0f));
 		
-		
-		
+		//label
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		this.add(nombre,gbc);
@@ -109,15 +110,9 @@ public class AEstacion extends JPanel {
 		//gbc.ipadx = 40;
 		//gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.add(agregar,gbc);
-		gbc.gridx = 3;
+		gbc.gridx = 2;
 		gbc.gridy = 6;
-		//gbc.anchor = GridBagConstraints.WEST;
-		this.add(salir,gbc);
-		
-//		agregar.addActionListener(e -> {
-//			tit.setText("OK");
-//			tit.setForeground(Color.RED);
-//					});
+
 		
 		agregar.addActionListener(e -> {
 			String tnom = this.tnombre.getText();
@@ -134,22 +129,11 @@ public class AEstacion extends JPanel {
 		});
 			
 			
-		
-		
-		salir.addActionListener(e -> {
-			//this.windowClosing(e);
-            //System.exit(0);
-			this.setVisible(false);
-           
-		});
-	
-		
 		//this.agregar.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		
 		return this;
 	}
-	
-	
+
 }
 
 	
